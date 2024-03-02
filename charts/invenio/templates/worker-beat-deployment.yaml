@@ -44,7 +44,12 @@ spec:
         - name: INVENIO_CELERY_BROKER_URL
           value: {{ include "invenio.rabbitmq.uri" . }}
         - name: INVENIO_SQLALCHEMY_DATABASE_URI
+          {{- if .Values.postgresqlExternal.sqlAlchemyDbUriFrom }}
+          valueFrom:
+            {{- .Values.postgresqlExternal.sqlAlchemyDbUriFrom | toYaml | nindent 12 }}
+          {{- else }}
           value: {{ include "invenio.sqlAlchemyDbUri" . }}
+          {{- end }}
         - name: INVENIO_SECRET_KEY
           valueFrom:
             secretKeyRef:

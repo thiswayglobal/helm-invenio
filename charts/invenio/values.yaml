@@ -210,12 +210,16 @@ flower:
       cpu: 0.1
 
 postgresql:
-  enabled: true
+  enabled: false
   auth:
     username: invenio
     database: invenio
 
-postgresqlExternal: {}
+postgresqlExternal:
+  sqlAlchemyDbUriFrom:
+    secretKeyRef:
+      name: postgres-secrets
+      key: URI
 
 opensearch:
   enabled: true
