@@ -7,7 +7,7 @@ dependencies:
   version: 14.0.1
 - name: rabbitmq
   repository: oci://registry-1.docker.io/bitnamicharts
-  version: 12.9.3
+  version: 12.14.0
 - name: redis
   repository: oci://registry-1.docker.io/bitnamicharts
   version: 18.12.0
