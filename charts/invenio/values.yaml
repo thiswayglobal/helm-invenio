@@ -14,7 +14,7 @@ invenio:
   secret_key: ""
   security_login_salt: ""
   csrf_secret_salt: ""
-  existing_secret: false
+  existing_secret: true
   init: false
   default_users: []  # Requires invenio.init=true
   demo_data: false  # Setting invenio.demo_data=true requires also setting default_users!
@@ -222,11 +222,12 @@ postgresqlExternal:
       key: URI
 
 opensearch:
-  enabled: true
+  enabled: false
   sysctlImage:
     enabled: false
 
-externalOpensearch: {}
+opensearchExternal:
+  hostname: ""
 
 logstash:
   enabled: false

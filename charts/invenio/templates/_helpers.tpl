@@ -61,7 +61,11 @@
 */}}
 {{- define "invenio.rabbitmq.password" -}}
   {{- if .Values.rabbitmq.enabled }}
-    {{- required "Missing .Values.rabbitmq.auth.password" .Values.rabbitmq.auth.password -}}
+    {{- if .Values.rabbitmq.auth.password }}
+      {{- .Values.rabbitmq.auth.password -}}
+    {{- else }}
+      {{- randAlphaNum 42 -}}
+    {{- end -}}
   {{- else }}
     {{- required "Missing .Values.rabbitmqExternal.password" .Values.rabbitmqExternal.password -}}
   {{- end }}
