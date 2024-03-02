@@ -212,8 +212,7 @@ spec:
           command: [
               "/bin/bash",
               "-c",
-              "ls -la {{ .Values.web.assets.location }}"
-{{/*              "cp -R {{ .Values.web.assets.location }}/* /opt/nginx-invenio-assets/",*/}}
+              "cp -R {{ .Values.web.assets.location }}/. /opt/nginx-invenio-assets/",
           ]
           resources:
             limits:
