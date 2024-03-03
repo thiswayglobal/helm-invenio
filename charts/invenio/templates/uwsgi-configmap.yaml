@@ -16,6 +16,7 @@ data:
     single-interpreter = true
     buffer-size = 8192
     wsgi-disable-file-wrapper = true
+    die-on-term = true
   uwsgi2.ini: |
     [uwsgi]
     socket = 0.0.0.0:5000
