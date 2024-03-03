@@ -156,6 +156,7 @@ persistence:
   access_mode: ReadWriteMany
   size: 10G
   storage_class: ""
+  s3Bucket: ""
 
 redis:
   enabled: true
