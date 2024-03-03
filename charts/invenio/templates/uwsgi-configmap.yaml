@@ -41,3 +41,12 @@ data:
     so-write-timeout = 120
     so-send-timeout = 120
     socket-send-timeout = 120
+
+    # Automatically respawn processes after serving
+    max-requests = 1000
+    max-requests-delta = 100
+
+    # fix up signal handling
+    die-on-term = true
+    # hook-master-start = unix_signal:2 gracefully_kill_them_all
+    # hook-master-start = unix_signal:15 gracefully_kill_them_all
