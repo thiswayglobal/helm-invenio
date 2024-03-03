@@ -8,7 +8,6 @@ ingress:
   enabled: false
   class: ""
   tlsSecretNameOverride: ""
-  enableTlsSecret: false
 
 invenio:
   hostname: ""
