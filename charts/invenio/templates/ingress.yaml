@@ -15,7 +15,9 @@ spec:
   tls:
     - hosts:
         - {{ include "invenio.hostname" $ }}
+      {{- if .Values.ingress.enableTlsSecret }}
       secretName: {{ include "invenio.tlsSecretName" $ }}
+      {{- end }}
   rules:
     - host: {{ include "invenio.hostname" $ }}
       http:
