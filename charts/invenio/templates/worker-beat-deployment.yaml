@@ -103,9 +103,9 @@ spec:
             command:
               - /bin/bash
               - -c
-              - "celery -A {{ .Values.worker.app }} inspect ping"
+              - "celery -A {{ .Values.worker.app }} inspect ping -t 60"
           initialDelaySeconds: 20
-          timeoutSeconds: 30
+          timeoutSeconds: 70
         {{- if .Values.worker.resources }}
         resources: {{- toYaml .Values.workerBeat.resources | nindent 10 }}
         {{- else }}

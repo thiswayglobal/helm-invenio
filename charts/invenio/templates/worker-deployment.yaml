@@ -108,9 +108,9 @@ spec:
               command:
                 - /bin/bash
                 - -c
-                - "celery -A {{ .Values.worker.app }} inspect ping -d celery@$(hostname)"
+                - "celery -A {{ .Values.worker.app }} inspect ping -d celery@$(hostname) -t 60"
             initialDelaySeconds: 20
-            timeoutSeconds: 30
+            timeoutSeconds: 70
           volumeMounts:
             {{- if .Values.persistence.enabled }}
             - mountPath: /opt/invenio/var/instance/data
