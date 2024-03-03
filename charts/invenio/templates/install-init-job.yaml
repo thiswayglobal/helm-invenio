@@ -10,7 +10,7 @@ metadata:
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "1"
 {{/*    "helm.sh/hook-delete-policy": hook-succeeded*/}}
-{{- $files_location_local := "'default-location'  $(invenio shell --no-term-title -c \"print(app.instance_path)\")'/data"}}
+{{- $files_location_local := "'default-location'  $(invenio shell --no-term-title -c \"print(app.instance_path)\")'/data'"}}
 {{- $files_location_s3 := printf "s3-default  s3://%s" .Values.persistence.s3Bucket }}
 {{- $files_location := ternary $files_location_local $files_location_s3 (eq .Values.persistence.s3Bucket "") }}
 {{- $cmd := printf "invenio db init && invenio db create && invenio index check || (invenio index init && invenio index queue init purge) && invenio files location --default %s  && (invenio roles create admin || true) && (invenio access allow superuser-access role admin || true)" $files_location -}}
