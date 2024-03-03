@@ -42,6 +42,7 @@ invenio:
         consumer_secret: ""
   extra_config: {}
   extra_env_from_secret: {}
+  extra_configmaps: []
 
 haproxy:
   enabled: true
@@ -161,9 +162,9 @@ persistence:
   access_mode: ReadWriteMany
   size: 10G
   storage_class: ""
-#  s3Bucket:
-#    name: ""
-#    valueFrom: {}
+  s3Bucket:
+    name: ""
+    valueFrom: {}
 
 redis:
   enabled: true
