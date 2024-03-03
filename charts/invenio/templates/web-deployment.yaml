@@ -116,7 +116,7 @@ spec:
           timeoutSeconds: {{ .Values.web.startupProbe.timeoutSeconds }}
         volumeMounts:
           - name: uwsgi-config
-            mountPath: '/opt/invenio/var/instance'
+            mountPath: /opt/invenio/var/instance
             subPath: 'uwsgi.ini'
           - name: nginx-invenio-assets
             mountPath: /opt/nginx-invenio-assets
