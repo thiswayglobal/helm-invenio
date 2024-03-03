@@ -13,7 +13,7 @@ data:
     die-on-term = true
     single-interpreter = true
     buffer-size = 8192
-    wsgi-disable-file-wrapper = true
+    #wsgi-disable-file-wrapper = true
 
     vacuum = true
     enable-threads = true
