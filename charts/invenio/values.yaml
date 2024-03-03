@@ -9,6 +9,11 @@ ingress:
   class: ""
   tlsSecretNameOverride: ""
 
+serviceAccount:
+  create: true
+  name: app
+  annotations: {}
+
 invenio:
   hostname: ""
   secret_key: ""

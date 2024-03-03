@@ -13,6 +13,9 @@ spec:
       labels:
         app: worker-beat
     spec:
+      {{- if .Values.serviceAccount.name }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      {{- end}}
       containers:
       - name: worker-beat
         image: {{ required "Missing .Values.worker.image" .Values.worker.image }}

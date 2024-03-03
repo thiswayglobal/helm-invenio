@@ -22,9 +22,12 @@ metadata:
 {{- end -}}
 
 spec:
-  ttlSecondsAfterFinished: 100
+  ttlSecondsAfterFinished: 60
   template:
     spec:
+      {{- if .Values.serviceAccount.name }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      {{- end}}
       containers:
       - name: install-init
         image: {{ required "Missing .Values.web.image" .Values.web.image }}
