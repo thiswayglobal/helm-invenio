@@ -68,7 +68,7 @@ spec:
         - name: S3_BUCKET
           {{- if .Values.persistence.s3Bucket.valueFrom }}
           valueFrom:
-            {{- .Values.persistence.s3Bucket.valueFrom. | toYaml | nindent 12 }}
+            {{- .Values.persistence.s3Bucket.valueFrom | toYaml | nindent 12 }}
           {{- else }}
           value: {{ required .Values.persistence.s3Bucket.name . }}
           {{- end}}
