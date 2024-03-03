@@ -11,8 +11,12 @@ data:
     module = invenio_app.wsgi_ui:application
     master = true
     die-on-term = true
-    processes = 2
-    threads = 2
     single-interpreter = true
     buffer-size = 8192
     wsgi-disable-file-wrapper = true
+
+    vacuum = true
+    enable-threads = true
+    processes = {{ .Values.web.uwsgi.processes }}
+    threads = {{ .Values.web.uwsgi.threads }}
+    thunder-lock = true
