@@ -34,3 +34,10 @@ data:
     ignore-sigpipe = true
     ignore-write-errors = true
     disable-write-exception = true
+
+    buffer-size = 65535
+    socket-timeout = 120
+    socket-write-timeout = 120
+    so-write-timeout = 120
+    so-send-timeout = 120
+    socket-send-timeout = 120
