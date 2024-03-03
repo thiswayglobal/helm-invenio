@@ -22,6 +22,7 @@ metadata:
 {{- end -}}
 
 spec:
+  ttlSecondsAfterFinished: 100
   template:
     spec:
       containers:
