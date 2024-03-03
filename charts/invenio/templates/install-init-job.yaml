@@ -71,7 +71,7 @@ spec:
               key: INVENIO_CSRF_SECRET_SALT
         {{- if $is_s3 }}
         - name: S3_BUCKET
-          {{- if not(empty .Values.persistence.s3Bucket.valueFrom) }}
+          {{- if (not(empty .Values.persistence.s3Bucket.valueFrom)) }}
           valueFrom:
             {{- .Values.persistence.s3Bucket.valueFrom | toYaml | nindent 12 }}
           {{- else }}
