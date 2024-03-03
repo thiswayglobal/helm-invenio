@@ -25,3 +25,8 @@ data:
     log-5xx = true
     log-ioerror = true
     log-x-forwarded-for = true
+
+    lazy = true
+    lazy-apps = true
+    single-interpreter = true
+    need-app = true
