@@ -117,7 +117,7 @@ spec:
         volumeMounts:
           - name: uwsgi-config
             mountPath: '/opt/invenio/var/instance'
-            subPath: uwsgi.ini
+            subPath: 'uwsgi.ini'
           - name: nginx-invenio-assets
             mountPath: /opt/nginx-invenio-assets
           {{- if .Values.persistence.enabled }}
