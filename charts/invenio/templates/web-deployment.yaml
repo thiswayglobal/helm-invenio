@@ -20,7 +20,7 @@ spec:
         command: [
             "/bin/bash",
             "-c",
-            "uwsgi --ini /opt/invenio/var/instance/uwsgi.ini",
+            "uwsgi --ini /opt/invenio/src/uwsgi/uwsgi.ini",
         ]
         {{- if .Values.web.resources }}
         resources: {{- toYaml .Values.web.resources | nindent 10 }}
@@ -116,9 +116,7 @@ spec:
           timeoutSeconds: {{ .Values.web.startupProbe.timeoutSeconds }}
         volumeMounts:
           - name: uwsgi-config
-            mountPath: /opt/invenio/var/instance
-            subPath: uwsgi.ini
-            readOnly: true
+            mountPath: '/opt/invenio/src/uwsgi'
           - name: nginx-invenio-assets
             mountPath: /opt/nginx-invenio-assets
           {{- if .Values.persistence.enabled }}
@@ -271,9 +269,6 @@ spec:
         configMap:
           defaultMode: 420
           name: uwsgi-config
-          items:
-            - key: uwsgi.ini
-              path: uwsgi.ini
       - name: nginx-invenio-assets
         emptyDir: {}
       {{- if .Values.persistence.enabled }}
