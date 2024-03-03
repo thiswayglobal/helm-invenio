@@ -156,9 +156,9 @@ persistence:
   access_mode: ReadWriteMany
   size: 10G
   storage_class: ""
-  s3Bucket:
-    name: ""
-    valueFrom: {}
+#  s3Bucket:
+#    name: ""
+#    valueFrom: {}
 
 redis:
   enabled: true
