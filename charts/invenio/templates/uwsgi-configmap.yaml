@@ -7,7 +7,7 @@ data:
   uwsgi.ini: |
     [uwsgi]
     socket = 0.0.0.0:5000
-    stats = /tmp/stats.socket
+    stats = 0.0.0.0:9000
     module = invenio_app.wsgi_ui:application
     master = true
     die-on-term = true
