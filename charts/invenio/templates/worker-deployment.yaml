@@ -40,8 +40,8 @@ spec:
                 name: {{ . }}
           {{- end }}
           {{- range .Values.invenio.extra_secret_names }}
-          - secretRef:
-              name: {{ . }}
+            - secretRef:
+                name: {{ . }}
           {{- end }}
           env:
           - name: TZ
