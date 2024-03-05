@@ -42,8 +42,8 @@ invenio:
         consumer_secret: ""
   extra_config: {}
   extra_env_from_secret: {}
-  extra_configmaps: []
-  extra_secrets: []
+  extra_configmap_names: []
+  extra_secret_names: []
 
 haproxy:
   enabled: true
