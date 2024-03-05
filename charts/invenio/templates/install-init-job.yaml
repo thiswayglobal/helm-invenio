@@ -10,10 +10,7 @@ metadata:
     "helm.sh/hook": post-install
     "helm.sh/hook-weight": "1"
 {{/*    "helm.sh/hook-delete-policy": hook-succeeded*/}}
-{{- $files_location_local := "'default-location'  $(invenio shell --no-term-title -c \"print(app.instance_path)\")'/data'"}}
-{{- $files_location_s3 := "s3-default  s3://$S3_BUCKET" }}
-{{- $is_s3 := or (not (empty .Values.persistence.s3Bucket.valueFrom)) (not (empty .Values.persistence.s3Bucket.name)) }}
-{{- $files_location := ternary $files_location_s3 $files_location_local $is_s3  }}
+{{- $files_location := "if [ -z \"${S3_BUCKET_NAME}\" ]; then invenio files location --default s3-default  s3://\"${S3_BUCKET_NAME}\"; else  invenio files location --default 'default-location'  $(invenio shell --no-term-title -c \"print(app.instance_path)\")'/data' fi"}}
 {{- $cmd := printf "invenio db init && invenio db create && invenio index check || (invenio index init && invenio index queue init purge) && invenio files location --default %s  && (invenio roles create admin || true) && (invenio access allow superuser-access role admin || true)" $files_location -}}
 {{- range $usr, $pass := .Values.invenio.default_users -}}
   {{- $cmd = printf "%s && invenio users create --active --password=%s %s" $cmd $pass $usr -}}
@@ -73,15 +70,6 @@ spec:
             secretKeyRef:
               name: invenio-secrets
               key: INVENIO_CSRF_SECRET_SALT
-        {{- if $is_s3 }}
-        - name: S3_BUCKET
-          {{- if empty .Values.persistence.s3Bucket.valueFrom }}
-          value: {{ required .Values.persistence.s3Bucket.name . }}
-          {{- else }}
-          valueFrom:
-            {{- .Values.persistence.s3Bucket.valueFrom | toYaml | nindent 12 }}
-          {{- end}}
-        {{- end}}
         {{- if .Values.web.resources }}
         resources: {{- toYaml .Values.web.resources | nindent 10 }}
         {{- end }}
