@@ -6,9 +6,9 @@ metadata:
   labels:
     app: install-init
     module: install
-  annotations:
-    "helm.sh/hook": post-install
-    "helm.sh/hook-weight": "1"
+{{/*  annotations:*/}}
+{{/*    "helm.sh/hook": post-install*/}}
+{{/*    "helm.sh/hook-weight": "1"*/}}
 {{/*    "helm.sh/hook-delete-policy": hook-succeeded*/}}
 {{- $files_location := "if [ -n \"${S3_BUCKET_NAME}\" ]; then invenio files location --default s3-default  s3://\"${S3_BUCKET_NAME}\"; else  invenio files location --default 'default-location'  $(invenio shell --no-term-title -c \"print(app.instance_path)\")'/data'; fi"}}
 {{- $cmd := printf "set -x; invenio db init && invenio db create && invenio index check || (invenio index init && invenio index queue init purge) && %s  && (invenio roles create admin || true) && (invenio access allow superuser-access role admin || true)" $files_location -}}
