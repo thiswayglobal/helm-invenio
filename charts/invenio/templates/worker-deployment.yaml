@@ -35,7 +35,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: invenio-config
-          {{- with .Values.invenio.extra_configmaps }}
+          {{- range .Values.invenio.extra_configmaps }}
             - configMapRef:
                 name: {{ . }}
           {{- end }}
