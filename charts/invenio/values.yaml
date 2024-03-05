@@ -2,6 +2,7 @@
 
 global:
   timezone: "Europe/Zurich"
+  deploymentAnnotations: {}
 
 ingress:
   annotations: {}

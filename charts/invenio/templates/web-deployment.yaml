@@ -3,6 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
+  {{- if .Values.web.annotations }}
+  annotations: {{- toYaml .Values.global.deploymentAnnotations | nindent 4 }}
+  {{- end }}
 spec:
   replicas: {{ .Values.web.replicas }}
   selector:
