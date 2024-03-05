@@ -39,6 +39,10 @@ spec:
             - configMapRef:
                 name: {{ . }}
           {{- end }}
+          {{- range .Values.invenio.extra_secrets }}
+          - secretRef:
+              name: {{ . }}
+          {{- end }}
           env:
           - name: TZ
             value: {{ required "Missing .Values.global.timezone" .Values.global.timezone }}

@@ -43,6 +43,7 @@ invenio:
   extra_config: {}
   extra_env_from_secret: {}
   extra_configmaps: []
+  extra_secrets: []
 
 haproxy:
   enabled: true
